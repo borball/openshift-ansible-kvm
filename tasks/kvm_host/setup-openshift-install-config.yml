@@ -37,6 +37,13 @@
     dest: /root/bin
     exclude: README.md
 
+- block:
+  - name: create manifests
+    command: "/root/bin/openshift-install create manifests --dir={{ files.kvm }}/bare-metal"
+  - name: provision customized openshift manifests
+    import_tasks: setup-customized-openshift-manifests.yml
+  when: customized_manifests_enabled
+
 - name: create ignition-configs
   command: "/root/bin/openshift-install create ignition-configs --dir={{ files.kvm }}/bare-metal"
 

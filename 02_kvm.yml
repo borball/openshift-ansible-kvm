@@ -4,7 +4,7 @@
     - vars/config.yml
     - vars/vm_setting.yml
     - vars/download.yml
-
+    - vars/customized.yml
   tasks:
     - include_tasks: tasks/kvm_host/mk_files-dir.yml
     - include_tasks: tasks/kvm_host/install-pkg.yml

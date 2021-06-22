@@ -1,0 +1,9 @@
+---
+- name: setup ntp server for masters and workers
+  template:
+    src: templates/manifests/99-machineconfig-chrony.yaml.j2
+    dest: "{{ files.kvm }}/bare-metal/openshift/99-machineconfig-{{ item }}-chrony.yaml"
+  with_items:
+    - master
+    - worker
+
