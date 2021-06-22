@@ -1,6 +1,6 @@
 ---
 - name: setup customized openshift manifests
   template:
-    src: "{{ item }}"
-    dest: "{{ files.kvm }}/bare-metal/openshift/{{ item | regex_replace(local_conf_file_unarchived) | regex_replace('.j2') }}"
-  with_items: "{{ lookup('pipe','find templates/manifests/ -type f -name *.j2 ').split('\n') }}"
+    src: "templates/manifests/{{ item }}"
+    dest: "{{ files.kvm }}/bare-metal/openshift/{{ item | regex_replace('.j2') }}"
+  with_items: "{{ lookup('pipe','find {{ playbook_dir }}/templates/manifests/ -type f -name *.j2 -exec basename {} \\;').split('\n') }}"
