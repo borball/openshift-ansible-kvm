@@ -2,8 +2,8 @@ apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
   labels:
-    machineconfiguration.openshift.io/role: {{ item }}
-  name: 99-{{ item }}-chrony-configuration
+    machineconfiguration.openshift.io/role: worker
+  name: 99-worker-chrony-configuration
 spec:
   config:
     ignition:

@@ -1,9 +1,6 @@
 ---
-- name: setup ntp server for masters and workers
+- name: setup customized openshift manifests
   template:
-    src: templates/manifests/99-machineconfig-chrony.yaml.j2
-    dest: "{{ files.kvm }}/bare-metal/openshift/99-machineconfig-{{ item }}-chrony.yaml"
-  with_items:
-    - master
-    - worker
-
+    src: "{{ item }}"
+    dest: "{{ files.kvm }}/bare-metal/openshift/{{ item | regex_replace(local_conf_file_unarchived) | regex_replace('.j2') }}"
+  with_items: "{{ lookup('pipe','find templates/manifests/ -type f -name *.j2 ').split('\n') }}"
