@@ -69,6 +69,16 @@
     path: "{{ libvirt_pool.path }}"
     state: directory
 
+- name: set acl for qemu user
+  acl:
+    path: "{{ libvirt_pool.path }}"
+    entity: qemu
+    etype: user
+    permissions: rx
+    default: yes
+    state: present
+   recursive: yes
+    -
 - name: autostart openshift storage pool
   virt_pool:
     name: openshift
