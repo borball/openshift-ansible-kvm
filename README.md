@@ -91,6 +91,13 @@ Other ways, you can use [sshuttle](https://fedoramagazine.org/use-sshuttle-to-bu
 $ ansible-playbook ./03_cleanup.yml
 ```
 
+### Manually approve the CSR request for the workers
+
+If works cannot join in the cluster, run command below to manually approve the CSR requests. You may need to run it multiple times.
+
+```shell
+for i in `oc get csr --no-headers | grep -i pending |  awk '{ print $1 }'`; do oc adm certificate approve $i; done
+```
 ## Special Thanks
 
 This project started with inspiration from openshift-fast-install. ( [the original version](https://github.com/konono/openshift-fast-install) and [the forked version](https://github.com/masaki-furuta/openshift-fast-install) )
