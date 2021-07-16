@@ -66,3 +66,4 @@
     command: create
     name: openshift
     state: active
+    autostart: yes
