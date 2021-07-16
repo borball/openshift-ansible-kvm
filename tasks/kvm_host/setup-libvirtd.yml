@@ -68,11 +68,10 @@
   file:
     path: "{{ libvirt_pool.path }}"
     state: directory
-    mode: g+rx,o+rx
 
 - name: set acl for qemu user
   acl:
-    path: "{{ libvirt_pool.path }}"
+    path: "{{ libvirt_pool.path }}/.."
     entity: qemu
     etype: user
     permissions: rx
