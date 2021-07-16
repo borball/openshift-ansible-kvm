@@ -47,6 +47,23 @@
   when: 'item.name in all_vms.list_vms'
   with_items: "{{ worker }}"
 
+- name: destroy openshift storage pool
+  virt_pool:
+    command: destroy
+    name: openshift
+  ignore_errors: yes
+
+- name: delete openshift storage pool
+  virt_pool:
+    command: delete
+    name: openshift
+  ignore_errors: yes
+
+- name: clean openshift storage pool folder
+  file:
+    path: "{{ libvirt_pool.path }}"
+    state: absent
+
 - name: stop libvirt daemon
   service:
     name: libvirtd
