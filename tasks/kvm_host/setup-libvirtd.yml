@@ -44,11 +44,22 @@
     name: openshift
   when: "'openshift' in all_pools.list_pools"
 
+- name: clean openshift storage pool folder
+  file:
+    path: "{{ libvirt_pool.path }}"
+    state: absent
+  when: "'openshift' in all_pools.list_pools"
+
 - name: create openshift storage pool
   virt_pool:
     command: define
     name: openshift
     xml: "{{lookup('file', '{{ files.base }}/conf/libvirtd.pool-openshift.xml')}}"
+
+- name: create openshift storage pool
+  file:
+    path: "{{ libvirt_pool.path }}"
+    state: directory
 
 - name: start openshift storage pool
   virt_pool:
