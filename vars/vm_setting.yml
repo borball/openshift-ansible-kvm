@@ -14,6 +14,9 @@ libvirt_nat:
   dhcp_start: 172.16.0.2
   dhcp_end: 172.16.0.254
 
+libvirt_pool:
+  path: /home/kni/virt-pool-openshift
+
 # Guet Settings
 #  Bootstrap VM
 bootstrap:

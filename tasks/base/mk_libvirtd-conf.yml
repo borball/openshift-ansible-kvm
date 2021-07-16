@@ -3,3 +3,8 @@
   template:
     src:  templates/libvirtd/nat-openshift.j2
     dest: "{{ files.base }}/conf/libvirtd.nat-openshift.xml"
+
+- name: make libvirtd/pool-openshift.conf
+  template:
+    src:  templates/libvirtd/pool-openshift.j2
+    dest: "{{ files.base }}/conf/libvirtd.pool-openshift.xml"
