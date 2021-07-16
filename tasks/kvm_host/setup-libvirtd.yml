@@ -43,6 +43,14 @@
     command: destroy
     name: openshift
   when: "'openshift' in all_pools.list_pools"
+  ignore_errors: yes
+
+- name: delete openshift storage pool
+  virt_pool:
+    command: delete
+    name: openshift
+  when: "'openshift' in all_pools.list_pools"
+  ignore_errors: yes
 
 - name: clean openshift storage pool folder
   file:
