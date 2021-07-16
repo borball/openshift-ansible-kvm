@@ -69,9 +69,13 @@
     path: "{{ libvirt_pool.path }}"
     state: directory
 
+- name: autostart openshift storage pool
+  virt_pool:
+    name: openshift
+    autostart: yes
+
 - name: start openshift storage pool
   virt_pool:
     command: create
     name: openshift
     state: active
-    autostart: yes
