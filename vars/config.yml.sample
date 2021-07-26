@@ -13,9 +13,9 @@ kvm_host:
 #  coreos_version:  CoreOS version
 #    ocp: https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/
 #    okd: https://getfedora.org/en/coreos/download?tab=metal_virtualized&stream=stable
-# --- e.g OCO 4.5 -------------
-#  install_version: 4.5.2
-#  coreos_version:  4.5.2
+# --- e.g OCP 4.8 -------------
+#  install_version: 4.8.2
+#  coreos_version:  4.8.2
 # --- e.g OKD 4 ---------------
 #  * The sha256sum of OCP4, oc client and openshift-install is automatically detected
 #  * by sha256sum.txt. but FOCS does not provide sha256sum.txt, so you have to
