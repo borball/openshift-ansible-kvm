@@ -36,7 +36,7 @@
     --os-variant rhel8.0
     --network network=openshift,mac="52:54:00:00:01:{{item.mac}}"
     --vcpus {{spec_worker.cpu}}
-    --cpu host-passthrough,cache.mode=passthrough,cell0.memory=8388608,cell0.cpus=0-3,cell1.memory=8388608,cell1.cpus=4-7
+    --cpu host-passthrough,cache.mode=passthrough,cell0.memory={{ spec_worker.ram * 512 }},cell0.cpus=0-{{ (spec_worker.cpu % 2) - 1 }},cell1.memory={{ spec_worker.ram * 512 }},cell1.cpus={{ spec_worker.cpu % 2 }}-{{ spec_worker.cpu - 1 }}
     --ram {{spec_worker.ram}}
     --disk pool=openshift,size={{spec_worker.disk}},format=qcow2,cache={{ spec_worker.disk_cache }}
     --check disk_size=off
