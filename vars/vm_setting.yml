@@ -1,8 +1,8 @@
 ---
 # OpenShift Network
 net:
-  domain: lab.local
-  subdomain: test
+  domain: e2e.bos.redhat.com
+  subdomain: bzhai-hive-hub
   cluster_cidr: 10.128.0.0/14
   cluster_prefx: 23
   service: 172.30.0.0/16
@@ -45,6 +45,9 @@ worker:
   - name: worker-1
     ip: 172.16.0.105
     mac: "06"
+  - name: worker-2
+    ip: 172.16.0.106
+    mac: "07"
 
 # Guest specs
 #  disk_cache: This attribute controls the cache mechanism.
@@ -71,9 +74,10 @@ spec_master:
 #   see also: 1.1.7.1. Sample install-config.yaml file for bare metal
 #   https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html/installing_on_bare_metal/installing-on-bare-metal#installation-initializing-manual_installing-bare-metal
 spec_worker:
-  num_worker: 2
+  num_worker: 3
   cpu: 8
-  ram: 16384
-  disk: 128
+  ram: 18432
+  disk1: 128
+  disk2: 50
+  disk3: 50
   disk_cache: unsafe
-

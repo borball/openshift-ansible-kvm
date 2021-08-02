@@ -38,7 +38,9 @@
     --vcpus {{spec_worker.cpu}}
     --cpu host-passthrough,cache.mode=passthrough,cell0.memory={{ spec_worker.ram * 512 }},cell0.cpus=0-{{ spec_worker.cpu // 2 - 1 }},cell1.memory={{ spec_worker.ram * 512 }},cell1.cpus={{ spec_worker.cpu // 2 }}-{{ spec_worker.cpu - 1 }}
     --ram {{spec_worker.ram}}
-    --disk pool=openshift,size={{spec_worker.disk}},format=qcow2,cache={{ spec_worker.disk_cache }}
+    --disk pool=openshift,size={{spec_worker.disk1}},format=qcow2,cache={{ spec_worker.disk_cache }}
+    --disk pool=openshift,size={{spec_worker.disk2}},format=qcow2,cache={{ spec_worker.disk_cache }}
+    --disk pool=openshift,size={{spec_worker.disk3}},format=qcow2,cache={{ spec_worker.disk_cache }}
     --check disk_size=off
     --nographics
     --noautoconsole
