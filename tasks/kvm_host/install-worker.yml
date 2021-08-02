@@ -62,6 +62,13 @@
   with_items: "{{ worker }}"
   delay: 3
 
+- name: autostart worker nodes
+  virt:
+    name: "{{ item.name }}"
+    state: running
+  with_items: "{{ worker }}"
+  delay: 3
+
 # we don't wait for start up of worker(s)
 #- name: waiting for sshd of worker
 #  wait_for:

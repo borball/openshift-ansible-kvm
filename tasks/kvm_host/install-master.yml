@@ -61,6 +61,13 @@
   with_items: "{{ master }}"
   delay: 3
 
+- name: autostart master nodes
+  virt:
+    name: "{{ item.name }}"
+    autostart: yes
+  with_items: "{{ master }}"
+  delay: 3
+
 - name: waiting for sshd of master
   wait_for:
     host: "{{ item.ip }}"

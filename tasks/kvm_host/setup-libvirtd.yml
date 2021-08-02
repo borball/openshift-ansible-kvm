@@ -33,6 +33,11 @@
     name: openshift
     state: active
 
+- name: autostart openshift nat
+  virt_net:
+    name: openshift
+    autostart: yes
+
 - name: list openshift storage pool
   virt_pool:
     command: list_pools
